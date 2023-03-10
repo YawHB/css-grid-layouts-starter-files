@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;800&family=VT323&display=swap");
+
+body {
+  margin: 30px;
+  font-family: "Poppins";
+}
+
+.grid-container {
+  background: #eee;
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 100px 200px 300px;
+  gap: 10px;
+  justify-items: stretch; /*manipulates the content inside each element left/right. stretch is the default and means the content fills out the elements/squares*/
+  align-items: stretch; /*Same as justify, but it moves the content up/down instead of left/right*/
+}
+
+.grid-container > div {
+  background: #ccc;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #777;
+}
+
+.grid-container > div:nth-child(1) {
+  grid-column: 1 / span 2; /* start at column 1.  span 2 means be 2 columns wide  */
+}
+.grid-container > div:nth-child(2) {
+  grid-column: span 3; /* when we dont state the beginning column, the element start at the first available column */
+}
+.grid-container > div:nth-child(3) {
+  grid-column: span 1;
+}
+.grid-container > div:nth-child(4) {
+  grid-column: 2 / 6; /* start at column line 2 and end at column line 6*/
+  justify-self: start; /* (justify = left/right) overrides line 16 so that the content of div 4 is in the start (left) of the element  */
+  align-self: end; /* (align = up/down) overrides line 17 so that the content of div 4 is in the bottom(the end) */
+}
+.grid-container > div:nth-child(5) {
+  grid-column: span 3; /*when there are not enough columns left in the row, the element start from the next row */
+}
+.grid-container > div:nth-child(6) {
+  grid-column: span 3;
+  justify-self: end;
+  align-self: start;
+}

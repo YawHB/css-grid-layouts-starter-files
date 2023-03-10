@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;800&family=VT323&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins";
+}
+
+main {
+  /* Main/outer grid container*/
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  min-height: 100%;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: 1fr; /*each panel only has one row*/
+}
+
+.panel .text {
+  background: #eeeee7;
+  color: #323230;
+  padding: 30px 60px;
+}
+/*Welcome panel*/
+.panel.welcome {
+  background: #323230;
+  padding: 30px 60px;
+  grid-auto-rows: 1fr; /*Looks at all the grid items in this class and give them one row each of equal size. Right now it has 3 grid items, so that means 3 rows*/
+}
+
+.panel.welcome nav a {
+  color: #a8a8a8;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.panel.welcome p {
+  color: #a8a8a8;
+  max-width: 540px;
+  line-height: 2em;
+}
+
+.panel.welcome h1 {
+  color: #eeeee7;
+  font-size: 3em;
+}
+
+.panel.welcome footer {
+  align-self: end; /*align-self takes that element and places it in the bottom of that grid item */
+}
+/*about panel*/
+.panel.about {
+  grid-template-rows: 3fr 1fr;
+  overflow: hidden;
+}
+.panel.about img {
+  min-width: 100%;
+  min-height: 100%;
+}
+/*photos panel*/
+.panel.photos {
+  grid-template-rows: 1fr 3fr;
+  overflow: hidden;
+}
+
+.panel.photos img {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Responsive layouts */
+
+@media screen and (max-width: 1400px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+  .panel.panel.photos {
+    grid-column: span 2;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+
+@media (max-width: 960px) {
+  main {
+    grid-template-columns: 100%;
+    grid-template-rows: 500px 400px 400px;
+  }
+  .panel.about {
+    grid-row: 2;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+  .panel img {
+    width: 100%;
+  }
+}
+@media (max-width: 680px) {
+  main {
+    grid-template-rows: 700px 600px 600px;
+  }
+  .panel.about,
+  .panel.photos {
+    grid-template-columns: 1fr;
+    grid-column: span 1;
+    grid-template-rows: 1fr 1fr;
+    border-bottom: 1px solid #dcdcd0;
+  }
+}
